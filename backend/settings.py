@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'aggregate_app',
-    'managers'
+    'managers',
+    'second_db_app',
+    'hard'
 ]
 
 MIDDLEWARE = [
@@ -78,11 +80,23 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
+
+    },
+    'second_db': {
+        'NAME': 'mydb_psql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'postgres',
+        'PASSWORD': 'qwerty123',
+        'HOST': 'localhost',
+        'PORT': '54320'
+    },
+    'hard_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'hard_db.sqlite3'),
     }
 }
 
+DATABASE_ROUTERS = ['routers.db_routers.SecondDBRouter', 'routers.db_routers.HardRouter']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
