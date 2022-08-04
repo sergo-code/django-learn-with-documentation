@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'aggregate_app',
     'managers',
     'second_db_app',
-    'hard'
+    'hard',
+    'relationships'
 ]
 
 MIDDLEWARE = [
@@ -80,7 +81,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     'second_db': {
         'NAME': 'mydb_psql',
@@ -92,7 +94,7 @@ DATABASES = {
     },
     'hard_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'hard_db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'hard.sqlite3'),
     }
 }
 
