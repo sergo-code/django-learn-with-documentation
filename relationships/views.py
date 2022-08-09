@@ -1,10 +1,28 @@
 import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods, require_GET, require_POST, require_safe
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
+from .models import Publication
 from .forms import UploadFileForm
+
+
+def smart_func(request):
+    obj = get_object_or_404(Publication, pk=2)
+    return render(request, 'smart.html', {'obj': obj})
+
+
+def hardcoded_URL(request):
+    return redirect('https://vk.com/im')
+
+
+@require_safe
+def index(request):
+    context = {
+        'title': 'Заголовок index',
+    }
+    return render(request, 'index.html', context=context)
 
 
 def upload_file(request):

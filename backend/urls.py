@@ -18,7 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('relationships/', include('relationships.urls', namespace='relationships-urls')),
+    path('', include('relationships.urls', namespace='relationships-urls')),
     # template {% url 'relationships-urls:m2m' item.pk %}
 
 ]
