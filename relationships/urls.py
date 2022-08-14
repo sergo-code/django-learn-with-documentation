@@ -7,7 +7,10 @@ from .converters import FourDigitYearConverter
 register_converter(FourDigitYearConverter, 'yyyy')
 app_name = 'relationships-urls'
 urlpatterns = [
-    path('', index),
+    path('', get_name),
+    path('reverse-form/', reverse_form),
+    path('thanks/', thanks),
+    path('index/', index),
     path('smart/', smart_func),
     path('vk-page/', hardcoded_URL),
     path('m2m/', relationship_m2m, name='m2m'),

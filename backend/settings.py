@@ -84,18 +84,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'second_db': {
-        'NAME': 'mydb_psql',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': 'postgres',
-        'PASSWORD': 'qwerty123',
-        'HOST': 'localhost',
-        'PORT': '54320'
-    },
-    'hard_db': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'hard.sqlite3'),
-    }
+    # 'second_db': {
+    #     'NAME': 'mydb_psql',
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'qwerty123',
+    #     'HOST': 'localhost',
+    #     'PORT': '54320'
+    # },
+    # 'hard_db': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'hard.sqlite3'),
+    # }
 }
 
 DATABASE_ROUTERS = ['routers.db_routers.SecondDBRouter', 'routers.db_routers.HardRouter']
