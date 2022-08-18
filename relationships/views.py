@@ -6,7 +6,30 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.core.mail import send_mail
 
 from .models import Publication
-from .forms import UploadFileForm, NameForm, ContactForm
+from .forms import UploadFileForm, NameForm, ContactForm, PublicationForm
+
+
+def model_form(request):
+    if request.method == 'POST':
+        form = PublicationForm(request.POST)
+        if form.is_valid():
+            pub = form.save(commit=False)
+            pub.title = form.cleaned_data['title']
+            pub.save()
+    else:
+        form = PublicationForm(request.POST)
+    return render(request, 'reverse_form.html', {'form': form, 'title': 'Form reverse'})
+
+
+def email(request):
+    send_mail(
+        'Subject here',
+        'Here is the message.',
+        'from@example.com',
+        ['to@example.com'],
+        fail_silently=False,
+    )
+    return render(request, 'index.html')
 
 
 def reverse_form(request):

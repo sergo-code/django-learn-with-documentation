@@ -1,4 +1,13 @@
 from django import forms
+from .models import Publication
+
+
+class PublicationForm(forms.ModelForm):
+    class Meta:
+        model = Publication
+        fields = ['title']
+        # fields = '__all__'
+        # exclude = ['title']
 
 
 class UploadFileForm(forms.Form):

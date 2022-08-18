@@ -8,6 +8,7 @@ register_converter(FourDigitYearConverter, 'yyyy')
 app_name = 'relationships-urls'
 urlpatterns = [
     path('', get_name),
+    path('model_form/', model_form),
     path('reverse-form/', reverse_form),
     path('thanks/', thanks),
     path('index/', index),
